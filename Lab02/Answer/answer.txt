@@ -1,0 +1,3 @@
+Question: If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does java allow you to do this?
+Answer: No. While Java allow method overloading, the constructor of the same object must have different parameters. As both title and category use the parameter String,
+you can't create a constructor method to build a DVD by title then create a constructor method to build a DVD by category.
