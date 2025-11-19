@@ -1,0 +1,33 @@
+- What class should implement the Comparable interface?
+- Answer: The class media should implement the Comparable interface cause:
++ All media items(Book, DigitalVideoDisc, CompactDisk) share the same base type Media.
++ The cart contains a list of medias.
++ Sorting doesn't care about the specific media types.
+- In those classes, how should you implement the compareTo()method be to reflect the ordering that we 
+want?
+-Answer: For title then cost, overide compareTo() with this code
+@Override
+public int compareTo(Media other) {
+    int titleCompare = this.getTitle().compareToIgnoreCase(other.getTitle());
+    if (titleCompare != 0)
+        return titleCompare;
+    return Float.compare(this.getCost(), other.getCost());
+}
+For cost then title:
+@Override
+public int compareTo(Media other) {
+    int costCompare = Float.compare(this.getCost(), other.getCost());
+    if (costCompare != 0) {
+        return costCompare;
+    }
+    return this.getTitle().compareToIgnoreCase(other.getTitle());
+}
+
+- Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this 
+Comparable interface approach?
+-Answer: No, Comparable gives a single natural ordering. You can only have one implementation of compareTo() per class.
+- Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing 
+length, then cost. How would you modify your code to allow this? 
+-Answer: We can O=override compareTo() only in DVD class but now two DVD objects sort differently than other media types.
+The better option is using Comparator instead of Comparable for all sorting as each media type can have its own comparator
+and you can plug in any comparator into the sorting method.
