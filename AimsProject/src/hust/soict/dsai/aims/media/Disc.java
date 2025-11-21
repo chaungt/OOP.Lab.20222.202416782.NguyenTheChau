@@ -9,9 +9,10 @@ public abstract class Disc extends Media {
 	public String getDirector() {
 		return director;
 	}
-	public Disc() {
-		super();
+	public Disc(int id, String title, String category, float cost) {
+		super(id, title, category, cost);
 	}
 	
 
 }
+ 

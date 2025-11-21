@@ -22,5 +22,8 @@ public class Book extends Media {
 			System.out.println("The author is not in the list");
 		}
 	}
-
+	public Book(int id, String title, String category, float cost) {
+		super(id, title, category, cost);
+	}
 }
+ 

@@ -1,13 +1,13 @@
 package hust.soict.dsai.aims.cart;
-import java.util.UUID;
 import java.util.ArrayList;
 import hust.soict.dsai.aims.media.*;
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	public ArrayList<Media> itemsOrdered = new ArrayList<Media>();
     public void addMedia(Media media) {
     	if(!itemsOrdered.contains(media) && itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
     		itemsOrdered.add(media);
+    		System.out.println("Media has been added");
     	} else {
     		System.out.println("Media already in cart");
     	}
@@ -15,8 +15,9 @@ public class Cart {
     public void removeMedia(Media media) {
     	if(itemsOrdered.contains(media)) {
     		itemsOrdered.remove(media);
+    		System.out.println("Media has been removed");
     	} else {
-    		System.out.println("Media already in cart");
+    		System.out.println("Media not in cart");
     	}
     }
     public float totalCost() {
@@ -28,8 +29,10 @@ public class Cart {
 	}
     public void print() {
     	System.out.println("The DVDs in cart are:");
+    	int j = 0;
     	for (Media media : itemsOrdered) {
-    		System.out.println(j + ". DVD - " + itemsOrdered[i].getTitle() + " - " +itemsOrdered[i].getCategory() + " - " + itemsOrdered[i].getDirector() + " - " + itemsOrdered[i].getLength() + ": " + itemsOrdered[i].getCost());
+    		j++;
+    		System.out.println(j + ". Media - " + media.getTitle() + " - " +media.getCategory() + " - "  + media.getCost());
     	}
     	System.out.println("Total cost: " + this.totalCost());
     }
@@ -59,4 +62,4 @@ public class Cart {
     }
     			
 }
-
+ 

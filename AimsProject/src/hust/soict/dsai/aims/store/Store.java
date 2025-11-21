@@ -1,9 +1,11 @@
 package hust.soict.dsai.aims.store;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Collections;
 import hust.soict.dsai.aims.media.*;
 
 public class Store {
-	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+	public ArrayList<Media> itemsInStore = new ArrayList<Media>();
 	private int medias = 0;
     public void addMedia(Media media) {
     	if(!itemsInStore.contains(media)) {
@@ -21,12 +23,24 @@ public class Store {
     		System.out.println("Media not in cart");
     	}
     }
-    public void print() {
-    	System.out.println("The DVDs in the store are:");
-    	for (int i = 0; i < medias; i++) {
-    		int j = i+1;
-    		System.out.println(j + ". DVD - " + itemsInStore[i].getTitle() + " - " +itemsInStore[i].getCategory() + " - " + itemsInStore[i].getDirector() + " - " + itemsInStore[i].getLength() + ": " + itemsInStore[i].getCost());
+    public boolean check(String title) {
+    	for (Media media : itemsInStore) {
+    		if (media.getTitle().equalsIgnoreCase(title)) {
+    			return true;
+    		}
     	}
+    	return false;
     }
+   public void print() {
+    	System.out.println("The DVDs in the store are:");
+    	int j = 0;
+    	for (Media media : itemsInStore) {
+    		j++;
+    		System.out.println(j + ". Media - " + media.getTitle() + " - " +media.getCategory() + " - "  + media.getCost());
+    	}
+    } 
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+    
 
 }

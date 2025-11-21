@@ -1,5 +1,5 @@
 package hust.soict.dsai.aims.media;
-
+import java.util.Comparator;
 public abstract class Media {
 	protected int id;
 	protected String title;
@@ -49,3 +49,4 @@ public abstract class Media {
 	
 
 }
+ 
