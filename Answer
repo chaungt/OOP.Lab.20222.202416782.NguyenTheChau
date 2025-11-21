@@ -1,0 +1,5 @@
+Java is always a Pass by Value programming language. When arguments are passed to a method in Java, a copy of the argument's value is made and used within the method.
+This applies to both primitive types and object references. Changed made in the copied value in the method does not affect the original variable.
+For object references, if the method modifies the state of the object through this copied reference , these changes will be reflected in the original object because both references point to the same underlying object.
+However, if the method reassigns the parameter to a new object or null, this reassignment only affects the local copy of the reference within the method.
+The original variable in the calling scope still refers to the original object.
